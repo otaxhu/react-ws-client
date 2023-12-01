@@ -11,14 +11,32 @@ import { useState } from "react";
  * @type {React.FC<React.PropsWithChildren<ChatRoomProps>>}
  */
 const ChatRoom = () => {
-	const [count, setCount] = useState(0);
+	const [msgClient, setMsgClient] = useState("");
+	const [msgServer, setMsgServer] = useState([]);
+
+	/**
+	 * @type {React.FormEventHandler<HTMLFormElement>}
+	 */
+	const handleOnSubmit = (e) => {
+		e.preventDefault();
+		sendMessageGo(msgClient)
+			.then(res => setMsgServer([...msgServer, res]));
+	};
+
 	return (
 		<>
-			<p>{count}</p>
-			<button onClick={() => setCount(count + 1)}>Click</button>
-			<p>
-				chatroom works!!
-			</p>
+			{msgServer.map((val, i) => (
+				<p key={i}>
+					{i}
+					:
+					{" "}
+					{val}
+				</p>
+			))}
+			<form onSubmit={handleOnSubmit}>
+				<input onChange={(e) => setMsgClient(e.target.value)} type="text" placeholder="Escribe tu mensaje" />
+				<input type="submit" value="submit" />
+			</form>
 		</>
 	);
 };

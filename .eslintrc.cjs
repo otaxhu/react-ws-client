@@ -12,6 +12,7 @@ module.exports = {
 		"dist",
 		".eslintrc.cjs",
 		".eslintstyles.cjs",
+		"cmd",
 	],
 	parserOptions: { ecmaVersion: "latest", sourceType: "module" },
 	settings: { react: { version: "18.2" } },
@@ -26,5 +27,6 @@ module.exports = {
 		],
 		"react/prop-types": "off",
 		"eqeqeq": "error",
+		"no-undef": "off",
 	},
 };

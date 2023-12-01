@@ -3,5 +3,8 @@
 		"jsx": "react-jsx",
 		"checkJs": true,
 		"strict": true,
+		"lib": [
+			"DOM"
+		]
 	}
 }

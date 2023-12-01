@@ -5,7 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": "vite build && GOOS=js GOARCH=wasm go build -o cmd/webserver/dist/app.wasm cmd/go-ws-client/main.go && cp $(go env GOROOT)/misc/wasm/wasm_exec.js cmd/webserver/dist/",
+		"build-webserver": "rm -rf dist && go build -o dist/app_linux cmd/webserver/main.go",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview"
 	},
